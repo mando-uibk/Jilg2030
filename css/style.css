@@ -408,6 +408,30 @@ body {
   margin-bottom: 0.85rem;
 }
 
+/* Ausgebaute Programmpunkte */
+.program-points {
+  margin-top: 1rem;
+}
+
+.program-points h3 {
+  font-family: var(--font-head);
+  color: var(--blue);
+  font-size: 1.2rem;
+  margin: 1.75rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--red-bright);
+  display: inline-block;
+}
+
+.program-points h3:first-child {
+  margin-top: 0.5rem;
+}
+
+.program-points p {
+  margin: 0 0 0.25rem;
+  line-height: 1.6;
+}
+
 /* Kontakt / E-Mail */
 .contact-email {
   font-size: 1.25rem;
