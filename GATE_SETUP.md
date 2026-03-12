@@ -15,11 +15,13 @@ Nach erfolgreicher Eingabe wird ein **Cookie** gesetzt (Standard: **7 Tage**), d
 
 ## GitHub: Secret anlegen
 
-1. Repo **mando-uibk/Jilg2030** → **Settings** → **Secrets and variables** → **Actions**
-2. **New repository secret**
-   - Name: **`SITE_PASSWORD`**
-   - Value: dein gewünschtes Passwort (einmalig speichern)
-3. Beim nächsten **Push** auf `main` schreibt der Workflow `js/gate-secret.js` mit diesem Wert und deployt – das Gate ist aktiv.
+1. **Wichtig:** **Settings → Pages → Build and deployment → Source** muss **GitHub Actions** sein. Steht dort noch **Deploy from branch**, wird **nie** injiziert – die live Site ist dann die Rohversion ohne Passwort.
+2. Repo **mando-uibk/Jilg2030** → **Settings** → **Secrets and variables** → **Actions**
+3. **New repository secret**
+   - Name: **`SITE_PASSWORD`** (exakt so)
+   - Value: dein Passwort
+4. **Environment `github-pages`:** Falls das Secret im Job leer ankommt (Log zeigt `SITE_PASSWORD length: 0`): **Settings → Environments → github-pages** → **Environment secrets** → ebenfalls **`SITE_PASSWORD`** anlegen.
+5. Nach dem Anlegen: **Actions → Deploy Pages → Run workflow** – im Log beim Schritt **Build gate-built.js** muss stehen **`SITE_PASSWORD length: <Zahl>`** mit **Zahl > 0**. Bei **0** bleibt das Gate aus.
 
 Ohne gesetztes Secret bleibt `gate-secret.js` leer → **kein Gate** (wie bisher).
 
@@ -58,8 +60,8 @@ Cookie löschen = Passwort wird beim nächsten Besuch wieder verlangt.
 | Datei | Rolle |
 |-------|--------|
 | `js/gate.js` | Logik: Cookie prüfen, Overlay, Vergleich |
-| `js/gate-secret.js` | `window.__JILG_SITE_PASSWORD__` – im Repo leer; in CI aus Secret gefüllt |
-| `.github/workflows/pages.yml` | Schritt „Inject site password“ vor Upload |
+| `js/gate-built.js` | **Eine Datei:** Zeile 1 = Passwort (CI), Rest = Gate-Logik (aus `gate.js`). Lokal mit `""` = kein Gate. |
+| `js/gate.js` | Quelle für die Logik; Workflow baut daraus `gate-built.js` |
+| `.github/workflows/pages.yml` | Schritt „Build gate-built.js“ vor Upload |
 
-`index.html` lädt nur `gate-secret.js` + `gate.js` (kein `style.css`, damit nichts durchscheint).  
-Alle **Inhaltsseiten** inkl. `home.html` laden dieselben Skripte zuerst – ohne Cookie erfolgt **sofortiger Redirect** auf die Gate-Seite.
+Alle Seiten laden nur **`js/gate-built.js`** (kein zweiter Request mehr – vermeidet leere/alte `gate-secret.js` durch Cache oder falschen Deploy).
