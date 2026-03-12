@@ -28,6 +28,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # Passwort-Gate: Secret SITE_PASSWORD → js/gate-secret.js (nicht im Repo als Klartext)
+      - name: Inject site password for gate
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: |
+          node -e "
+          const fs = require('fs');
+          const p = process.env.SITE_PASSWORD || '';
+          fs.writeFileSync('js/gate-secret.js', 'window.__JILG_SITE_PASSWORD__=' + JSON.stringify(p) + ';');
+          "
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
