@@ -32,10 +32,38 @@ Beim ersten Push fragt Git nach Login – am einfachsten **GitHub-Anmeldung im B
 
 ## Schritt 3: GitHub Pages einschalten
 
+### Variante A – Über Actions (empfohlen, Repo enthält `.github/workflows/pages.yml`)
+
 1. Repo auf GitHub öffnen → **Settings** → **Pages**
-2. **Source:** Branch **main**, Ordner **/** (root)
-3. Speichern – nach 1–2 Minuten:  
+2. Unter **Build and deployment** → **Source:** **GitHub Actions** wählen (nicht „Deploy from branch“).
+3. Einmal **Push** auf `main` auslösen – unter **Actions** sollte „Deploy Pages“ grün werden.
+4. URL (nach 1–3 Minuten):  
    `https://DEIN_USERNAME.github.io/Jilg2030/`
+
+### Variante B – Direkt vom Branch
+
+1. **Settings** → **Pages**
+2. **Source:** Branch **main**, Ordner **/** (root)
+3. Speichern – warten, dann dieselbe URL testen.
+
+### Wenn die Seite „noch nicht verfügbar“ ist (404)
+
+| Prüfen | Wo |
+|--------|-----|
+| Repo **öffentlich**? | Private Repos brauchen für Pages ggf. andere Einstellungen / Pro. |
+| **Pages** wirklich aktiviert? | Settings → Pages – muss grüner Hinweis mit URL erscheinen. |
+| **Actions** durchgelaufen? | Tab **Actions** – letzter Lauf muss grün sein; bei Rot: Logs ansehen. |
+| Richtige URL? | `https://USERNAME.github.io/RepoName/` – Repo-Name **groß/klein** wie auf GitHub. |
+| 5–10 Min warten | Erster Deploy kann verzögert starten. |
+
+Nach dem Hinzufügen des Workflows **unbedingt pushen**:
+
+```powershell
+cd "c:\Users\Armando\Desktop\Cursor\Jilg2030"
+git add .github/workflows/pages.yml
+git commit -m "Add GitHub Actions Pages deploy"
+git push origin main
+```
 
 ## Optional: GitHub CLI (`gh`)
 
