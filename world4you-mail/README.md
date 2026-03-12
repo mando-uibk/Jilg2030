@@ -21,11 +21,11 @@ Statt Formspree nutzt ihr **euer World4You-Postfach** (`buergermeister@jilg2030.
 
 ## Schritt 1: PHPMailer
 
-- ZIP von https://github.com/PHPMailer/PHPMailer/releases laden  
-- Entpacken, den Ordner **`src`** nach **`world4you-mail/PHPMailer/src`** legen  
-  (also `send-thanks.php` und `PHPMailer/src/PHPMailer.php` liegen im gleichen Webroot-Unterordner).
+**Im Repo ist PHPMailer bereits unter `world4you-mail/PHPMailer/src/` enthalten** – ihr könnt den ganzen Ordner `world4you-mail` per FTP hochladen, ohne PHPMailer extra zu laden.
 
-Alternativ per SSH/Composer im Upload-Ordner:
+Falls der Ordner fehlt: siehe **`PHPMailer-INSTALL.md`** (ZIP oder PowerShell).
+
+Alternativ per Composer im Upload-Ordner:
 
 ```bash
 composer require phpmailer/phpmailer
