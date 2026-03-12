@@ -23,6 +23,16 @@ Nach erfolgreicher Eingabe wird ein **Cookie** gesetzt (Standard: **7 Tage**), d
 
 Ohne gesetztes Secret bleibt `gate-secret.js` leer → **kein Gate** (wie bisher).
 
+### „Online geht es nicht“, obwohl Secret gesetzt ist
+
+| Problem | Lösung |
+|--------|--------|
+| **Falscher Name** | Es muss exakt **`SITE_PASSWORD`** heißen (Großbuchstaben, Unterstrich). Nicht `site_password`, nicht `SITE PASSWORD`, nicht `SECRET_SITE_PASSWORD`. |
+| **Falsche Stelle** | Unter **Settings → Secrets and variables → Actions** als **Repository secret** anlegen (grüner Bereich „Repository secrets“). |
+| **Kein neuer Deploy** | Secret wird **erst beim nächsten Workflow-Lauf** in die Datei geschrieben. Nach dem Anlegen: **Actions** → **Deploy Pages** → **Run workflow** ausführen **oder** einen beliebigen Commit pushen. |
+| **Prüfen, ob Inject geklappt hat** | Im Workflow-Log beim Schritt **Inject site password** steht die **Dateigröße** von `js/gate-secret.js`. Ist sie nur ~45 Bytes, ist das Passwort **leer** (Secret nicht gefunden). Mit Passwort ist die Datei deutlich länger. |
+| **Im Browser prüfen** | Seite öffnen → **F12** → **Netzwerk** → `gate-secret.js` anklicken → **Antwort** muss `window.__JILG_SITE_PASSWORD__="…"` mit **deinem** Passwort enthalten (in Anführungszeichen). Steht da `""`, war das Secret beim Deploy nicht gesetzt. |
+
 ## Lokal mit Passwort testen
 
 1. `js/gate-secret.js` anlegen (oder vorhandene Datei bearbeiten):

@@ -28,16 +28,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # Passwort-Gate: Secret SITE_PASSWORD → js/gate-secret.js (nicht im Repo als Klartext)
+      # Passwort-Gate: NUR Repository-Secret mit exaktem Namen SITE_PASSWORD (Actions → Secrets)
+      # Nach dem Anlegen des Secrets einen neuen Deploy auslösen (Push oder Actions → Deploy Pages → Run workflow)
       - name: Inject site password for gate
         env:
           SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          node -e "
-          const fs = require('fs');
-          const p = process.env.SITE_PASSWORD || '';
-          fs.writeFileSync('js/gate-secret.js', 'window.__JILG_SITE_PASSWORD__=' + JSON.stringify(p) + ';');
-          "
+          mkdir -p js
+          node -e "const fs=require('fs');const p=process.env.SITE_PASSWORD||'';fs.writeFileSync('js/gate-secret.js','window.__JILG_SITE_PASSWORD__='+JSON.stringify(p)+';');"
+          # Ohne Secret bleibt Datei leer → kein Gate. Mit Secret muss die Datei länger sein als nur window...="";
+          wc -c js/gate-secret.js || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
