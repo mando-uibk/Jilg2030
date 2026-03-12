@@ -58,13 +58,10 @@ Ohne diese CNAME-Eintrag kann GitHub `www.jilg2030.at` nicht auflösen → **Inv
 
 DNS-Propagierung: oft **15 Min – 48 h**. Danach `https://jilg2030.at` testen.
 
-## Schritt 3: Repo nachziehen (URLs)
+## Schritt 3: Fertig
 
-Nach dem Umzug:
-
-- **Formspree `_next`** muss auf **`https://jilg2030.at/danke.html`** zeigen (in `eintragung.html` bereits angepasst nach Push).
-- **programm-willkommen.txt** – Link auf Programmseite auf **jilg2030.at** stellen.
-- Alte **github.io**-Links können als Redirect weiter funktionieren; für Besucher ist die **Haupt-URL jilg2030.at**.
+Die Site ist nur noch **index.html** + **programm.html** – alle Links sind relativ oder auf **jilg2030.at**.  
+Kontakt: **buergermeister@jilg2030.at** (mailto, kein Formular).
 
 ## Schritt 4: Checkliste
 
@@ -75,7 +72,6 @@ Nach dem Umzug:
 | A-Records @ → 4× GitHub-IP | World4You DNS |
 | MX für Mail unverändert | World4You |
 | HTTPS erzwingen | GitHub Pages, nach grünem DNS-Check |
-| Formspree Redirect | `eintragung.html` → danke auf jilg2030.at |
 
 ## InvalidDNSError – „DNS record could not be retrieved“
 

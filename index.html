@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-  /* GitHub Pages: Base setzen, damit assets/ bei .../Jilg2030 ohne Slash funktionieren */
   (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,13 +20,11 @@
       <nav>
         <a href="index.html">Start</a>
         <a href="programm.html">Programm</a>
-        <a href="eintragung.html">Programm per E-Mail</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- Hero: Kandidat sehr prominent -->
     <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="wrap hero-grid">
@@ -42,7 +39,6 @@
           <a class="btn btn-primary" href="programm.html">Zum Programm</a>
         </div>
         <div class="hero-photo">
-          <!-- Pfad relativ zur Base; auf GitHub Pages setzt js/base-path.js die Base -->
           <img src="assets/hero.png" alt="Christoph Martin Jilg – Kandidat Bürgermeisterwahl Innsbruck 2030" width="600" height="750" loading="eager" decoding="async" />
           <p class="photo-note">Foto: Kampagne Jilg 2030</p>
         </div>
@@ -53,9 +49,9 @@
       <div class="wrap">
         <h2>Warum Jilg 2030?</h2>
         <p class="lead">
-          Unser Freund steht für <strong>sozialen Wohnbau als tragende Säule</strong> – 
-          mit klaren Konzepten für Innsbruck: unten Gewerbe, oben leistbarer Wohnraum. 
-          Der Rest des Programms folgt einem einfachen Prinzip: <em>Wohlstand muss sich rechnen</em> – 
+          Unser Freund steht für <strong>sozialen Wohnbau als tragende Säule</strong> –
+          mit klaren Konzepten für Innsbruck: unten Gewerbe, oben leistbarer Wohnraum.
+          Der Rest des Programms folgt einem einfachen Prinzip: <em>Wohlstand muss sich rechnen</em> –
           für alle, die schon Wohlstand haben.
         </p>
         <a class="btn btn-outline" href="programm.html">Programm lesen</a>
@@ -65,10 +61,11 @@
     <section class="section cta-band">
       <div class="wrap cta-inner">
         <div>
-          <h2>Programm direkt ins Postfach</h2>
-          <p>Eintragen – und den Programm-Einstieg <strong>sofort per E-Mail</strong> erhalten (wenn der Autoresponder in Formspree aktiv ist).</p>
+          <h2>Kontakt</h2>
+          <p>Fragen zum Programm? Schreiben Sie uns:</p>
+          <p class="contact-email"><a href="mailto:buergermeister@jilg2030.at">buergermeister@jilg2030.at</a></p>
         </div>
-        <a class="btn btn-light" href="eintragung.html">Eintragen</a>
+        <a class="btn btn-light" href="mailto:buergermeister@jilg2030.at">E-Mail schreiben</a>
       </div>
     </section>
   </main>
@@ -76,7 +73,7 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span>jilg2030.at</span>
-      <span>Bürgermeisterwahl Innsbruck 2030</span>
+      <span><a href="mailto:buergermeister@jilg2030.at">buergermeister@jilg2030.at</a></span>
     </div>
   </footer>
 </body>

@@ -350,105 +350,33 @@ body {
   font-size: 0.9rem;
 }
 
-/* Eintragung / Programm per E-Mail */
-/* Danke-Seite nach Formular-Absenden */
-.danke-page-box {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 2px solid #2e7d32;
-  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.08);
+/* Kontakt / E-Mail */
+.contact-email {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0;
 }
 
-.danke-page-box p {
+.contact-email a,
+.cta-band a {
+  color: var(--white);
+}
+
+.contact-block {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--off-white);
+}
+
+.contact-block h2 {
+  font-family: var(--font-head);
+  color: var(--blue);
   margin-top: 0;
 }
 
-.danke-note {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-.danke-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.programm-einstieg {
-  background: var(--off-white);
-  border-left: 4px solid var(--blue);
-  padding: 1.25rem 1.5rem;
-  margin: 1.25rem 0;
-  border-radius: 0 8px 8px 0;
-}
-
-.programm-einstieg-title {
-  font-family: var(--font-head);
-  color: var(--blue);
-  margin: 0 0 0.5rem;
-  font-size: 1.35rem;
-}
-
-.programm-einstieg h3 {
-  font-family: var(--font-head);
-  color: var(--red-bright);
-  margin: 1rem 0 0.35rem;
-  font-size: 1.1rem;
-}
-
-.slogan-inline {
+.contact-block a {
   font-weight: 700;
   color: var(--blue);
-  margin: 0 0 1rem;
-}
-
-.signup-box,
-.newsletter-box {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 2px solid var(--blue);
-  box-shadow: 0 8px 24px rgba(13, 45, 110, 0.08);
-}
-
-.signup-form label,
-.newsletter-form label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--blue);
-}
-
-.signup-form input[type="email"],
-.newsletter-form input[type="email"] {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.65rem 0.9rem;
-  font-size: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.signup-form input:focus,
-.newsletter-form input:focus {
-  outline: none;
-  border-color: var(--blue);
-}
-
-.form-hint {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.form-hint code {
-  background: #eee;
-  padding: 0.15rem 0.4rem;
-  border-radius: 3px;
 }
 
 /* Footer */
