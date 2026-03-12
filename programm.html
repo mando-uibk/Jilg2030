@@ -43,77 +43,10 @@
           ohne dass jemand auf Profit verzichten muss.
         </p>
 
-        <!-- Querschnitt-Render: unten Gewerbe, oben Wohnen -->
-        <figure class="building-render" aria-label="Querschnitt Mischgebäude">
-          <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet">
-            <title>Mischgebäude Querschnitt: Erdgeschoss Gewerbe, darüber Sozialwohnungen</title>
-            <defs>
-              <linearGradient id="glas" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#a8c8f0" stop-opacity="0.9"/>
-                <stop offset="1" stop-color="#1a3a6e" stop-opacity="0.85"/>
-              </linearGradient>
-              <linearGradient id="fassade" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#a01830"/>
-                <stop offset="0.5" stop-color="#c41e3a"/>
-                <stop offset="1" stop-color="#8b1530"/>
-              </linearGradient>
-              <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                <polygon points="0,0 8,4 0,8" fill="#fff"/>
-              </marker>
-            </defs>
-            <!-- Himmel -->
-            <rect width="520" height="340" fill="#0d2d6e"/>
-            <rect width="520" height="120" fill="url(#glas)" opacity="0.15"/>
-            <!-- Boden / Straße -->
-            <rect x="0" y="300" width="520" height="40" fill="#3d3d3d"/>
-            <rect x="0" y="295" width="520" height="8" fill="#5c4033"/>
-            <rect x="0" y="288" width="520" height="10" fill="#6b6b6b"/>
-            <!-- Gebäude-Umriss: schmaler Sockel (Gewerbe), darüber breiter Wohnblock -->
-            <!-- Wohnblock oben (setback visuell: gleiche Breite, klar getrennte Zonen) -->
-            <rect x="140" y="55" width="240" height="235" fill="url(#fassade)" stroke="#fff" stroke-width="2"/>
-            <!-- Geschossdecken als Linien -->
-            <line x1="140" y1="115" x2="380" y2="115" stroke="#fff" stroke-width="2" opacity="0.7"/>
-            <line x1="140" y1="175" x2="380" y2="175" stroke="#fff" stroke-width="2" opacity="0.7"/>
-            <line x1="140" y1="235" x2="380" y2="235" stroke="#fff" stroke-width="3" opacity="0.95"/>
-            <!-- Wohnfenster (3 Geschosse über Gewerbe) -->
-            <g fill="#e8f0ff" stroke="#0d2d6e" stroke-width="0.5">
-              <rect x="155" y="70" width="32" height="38" rx="2"/>
-              <rect x="205" y="70" width="32" height="38" rx="2"/>
-              <rect x="255" y="70" width="32" height="38" rx="2"/>
-              <rect x="305" y="70" width="32" height="38" rx="2"/>
-              <rect x="155" y="130" width="32" height="38" rx="2"/>
-              <rect x="205" y="130" width="32" height="38" rx="2"/>
-              <rect x="255" y="130" width="32" height="38" rx="2"/>
-              <rect x="305" y="130" width="32" height="38" rx="2"/>
-              <rect x="155" y="190" width="32" height="38" rx="2"/>
-              <rect x="205" y="190" width="32" height="38" rx="2"/>
-              <rect x="255" y="190" width="32" height="38" rx="2"/>
-              <rect x="305" y="190" width="32" height="38" rx="2"/>
-            </g>
-            <!-- Dach -->
-            <polygon points="130,55 260,25 390,55" fill="#1a1a1a" stroke="#fff" stroke-width="1.5"/>
-            <!-- Erdgeschoss: 3 Ladenzeilen mit großem Glas -->
-            <rect x="120" y="235" width="280" height="60" fill="#2a2a2a" stroke="#fff" stroke-width="2"/>
-            <rect x="128" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
-            <rect x="220" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
-            <rect x="312" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
-            <!-- Türen / Eingänge zwischen Schaufenstern -->
-            <rect x="210" y="268" width="18" height="27" fill="#1a1a1a" stroke="#fff" stroke-width="1"/>
-            <rect x="302" y="268" width="18" height="27" fill="#1a1a1a" stroke="#fff" stroke-width="1"/>
-            <!-- Beschriftungen seitlich (kein Überdecken) -->
-            <text x="20" y="100" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">SOZIALER</text>
-            <text x="20" y="118" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">WOHNBAU</text>
-            <text x="20" y="138" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">oben –</text>
-            <text x="20" y="155" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">mehrere</text>
-            <text x="20" y="172" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">Geschosse</text>
-            <text x="400" y="268" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">GEWERBE</text>
-            <text x="400" y="286" fill="rgba(255,255,255,0.9)" font-size="11" font-family="Segoe UI, sans-serif">Erdgeschoss</text>
-            <text x="400" y="302" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">Laden · Büro · Gastro</text>
-            <!-- Pfeil unten nach oben -->
-            <path d="M 95 270 L 95 80" stroke="#fff" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-            <text x="260" y="332" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="11" font-family="Segoe UI, sans-serif">Querschnitt: ein Gebäude – unten Wirtschaft, oben leistbarer Wohnraum</text>
-          </svg>
-          <figcaption>Querschnitt-Schema: Erdgeschoss mit großflächigem Gewerbe (Schaufenster), darüber mehrere Geschosse Sozialwohnungen.</figcaption>
+        <!-- Visualisierung: Mischgebäude unten Gewerbe (Café, Geschäft, Apotheke), oben Wohnen mit Bergen -->
+        <figure class="building-render building-render-photo" aria-label="Visualisierung Mischgebäude">
+          <img src="assets/mischgebaude.png" alt="Modernes Mischgebäude: Erdgeschoss mit Gewerbe, darüber Wohnungen mit Balkonen, im Hintergrund Berge" width="1200" height="675" loading="lazy" decoding="async" />
+          <figcaption>Visualisierung: Gewerbe im Erdgeschoss (Laden, Gastro, Dienstleistung), darüber Wohnraum – verdichtet und alpin, wie für Innsbruck denkbar.</figcaption>
         </figure>
 
         <h2>Weitere Programmpunkte (Kurz)</h2>
