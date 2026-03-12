@@ -275,6 +275,40 @@ body {
 .cta-band {
   background: var(--blue);
   color: var(--white);
+  padding: 2.5rem 0;
+}
+
+.cta-band-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cta-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-block:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cta-block-text {
+  flex: 1;
+  min-width: 240px;
+}
+
+.cta-motivation {
+  margin: 0.5rem 0 0;
+  opacity: 0.98;
+  line-height: 1.5;
+  max-width: 560px;
 }
 
 .cta-inner {
@@ -293,6 +327,26 @@ body {
 .cta-band p {
   margin: 0;
   opacity: 0.95;
+}
+
+/* Button auf blauem Band: nicht zu hell – kräftig lesbar */
+.btn-cta-mail {
+  background: var(--white);
+  color: var(--blue) !important;
+  border: 2px solid var(--white);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.btn-cta-mail:hover {
+  background: var(--off-white);
+  border-color: var(--off-white);
+  color: var(--blue) !important;
+}
+
+.btn-cta-lg {
+  padding: 0.75rem 1.6rem;
+  font-size: 1.05rem;
 }
 
 /* Programm page */
