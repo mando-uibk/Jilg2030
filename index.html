@@ -2,6 +2,10 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+  <script>
+  /* GitHub Pages: Base setzen, damit assets/ bei .../Jilg2030 ohne Slash funktionieren */
+  (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Christoph Martin Jilg – Kandidat für die Bürgermeisterwahl 2030 in Innsbruck. INNSBRUCK ZUERST." />
   <title>Jilg 2030 – Bürgermeisterwahl Innsbruck</title>
@@ -38,11 +42,8 @@
           <a class="btn btn-primary" href="programm.html">Zum Programm</a>
         </div>
         <div class="hero-photo">
-          <!-- Platzhalter: eigenes Foto nach assets/hero.png legen -->
-          <picture>
-            <source srcset="assets/hero.webp" type="image/webp" />
-            <img src="assets/hero.png" alt="Christoph Martin Jilg – Kandidat Bürgermeisterwahl Innsbruck 2030" width="600" height="750" />
-          </picture>
+          <!-- Pfad relativ zur Base; auf GitHub Pages setzt js/base-path.js die Base -->
+          <img src="assets/hero.png" alt="Christoph Martin Jilg – Kandidat Bürgermeisterwahl Innsbruck 2030" width="600" height="750" loading="eager" decoding="async" />
           <p class="photo-note">Foto: Kampagne Jilg 2030</p>
         </div>
       </div>

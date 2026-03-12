@@ -2,6 +2,9 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+  <script>
+  (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Programm Christoph Martin Jilg 2030 – Wohnen, Wirtschaft, Innsbruck." />
   <title>Programm – Jilg 2030</title>
@@ -41,51 +44,77 @@
           ohne dass jemand auf Profit verzichten muss.
         </p>
 
-        <!-- Kleines „Render“ als SVG -->
-        <figure class="building-render" aria-label="Schematische Darstellung: Gewerbe unten, Wohnen oben">
-          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img">
-            <title>Mischgebäude: Gewerbe unten, Sozialwohnungen oben</title>
+        <!-- Querschnitt-Render: unten Gewerbe, oben Wohnen -->
+        <figure class="building-render" aria-label="Querschnitt Mischgebäude">
+          <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet">
+            <title>Mischgebäude Querschnitt: Erdgeschoss Gewerbe, darüber Sozialwohnungen</title>
+            <defs>
+              <linearGradient id="glas" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#a8c8f0" stop-opacity="0.9"/>
+                <stop offset="1" stop-color="#1a3a6e" stop-opacity="0.85"/>
+              </linearGradient>
+              <linearGradient id="fassade" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#a01830"/>
+                <stop offset="0.5" stop-color="#c41e3a"/>
+                <stop offset="1" stop-color="#8b1530"/>
+              </linearGradient>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                <polygon points="0,0 8,4 0,8" fill="#fff"/>
+              </marker>
+            </defs>
             <!-- Himmel -->
-            <rect width="400" height="320" fill="#1a3a6e" />
-            <ellipse cx="320" cy="50" rx="45" ry="28" fill="rgba(255,255,255,0.15)" />
-            <ellipse cx="80" cy="70" rx="35" ry="22" fill="rgba(255,255,255,0.1)" />
-            <!-- Boden -->
-            <rect x="0" y="280" width="400" height="40" fill="#2d4a22" />
-            <rect x="0" y="275" width="400" height="8" fill="#4a3728" />
-            <!-- Gebäudekörper -->
-            <rect x="100" y="80" width="200" height="200" fill="#c41e3a" opacity="0.9" />
-            <rect x="100" y="80" width="200" height="200" fill="none" stroke="#fff" stroke-width="2" />
-            <!-- Oben: Wohnen (Fensterreihen) -->
-            <g fill="#e8f0ff">
-              <rect x="115" y="95" width="28" height="22" rx="2" />
-              <rect x="155" y="95" width="28" height="22" rx="2" />
-              <rect x="195" y="95" width="28" height="22" rx="2" />
-              <rect x="235" y="95" width="28" height="22" rx="2" />
-              <rect x="275" y="95" width="28" height="22" rx="2" />
-              <rect x="115" y="128" width="28" height="22" rx="2" />
-              <rect x="155" y="128" width="28" height="22" rx="2" />
-              <rect x="195" y="128" width="28" height="22" rx="2" />
-              <rect x="235" y="128" width="28" height="22" rx="2" />
-              <rect x="275" y="128" width="28" height="22" rx="2" />
-              <rect x="115" y="161" width="28" height="22" rx="2" />
-              <rect x="155" y="161" width="28" height="22" rx="2" />
-              <rect x="195" y="161" width="28" height="22" rx="2" />
-              <rect x="235" y="161" width="28" height="22" rx="2" />
-              <rect x="275" y="161" width="28" height="22" rx="2" />
+            <rect width="520" height="340" fill="#0d2d6e"/>
+            <rect width="520" height="120" fill="url(#glas)" opacity="0.15"/>
+            <!-- Boden / Straße -->
+            <rect x="0" y="300" width="520" height="40" fill="#3d3d3d"/>
+            <rect x="0" y="295" width="520" height="8" fill="#5c4033"/>
+            <rect x="0" y="288" width="520" height="10" fill="#6b6b6b"/>
+            <!-- Gebäude-Umriss: schmaler Sockel (Gewerbe), darüber breiter Wohnblock -->
+            <!-- Wohnblock oben (setback visuell: gleiche Breite, klar getrennte Zonen) -->
+            <rect x="140" y="55" width="240" height="235" fill="url(#fassade)" stroke="#fff" stroke-width="2"/>
+            <!-- Geschossdecken als Linien -->
+            <line x1="140" y1="115" x2="380" y2="115" stroke="#fff" stroke-width="2" opacity="0.7"/>
+            <line x1="140" y1="175" x2="380" y2="175" stroke="#fff" stroke-width="2" opacity="0.7"/>
+            <line x1="140" y1="235" x2="380" y2="235" stroke="#fff" stroke-width="3" opacity="0.95"/>
+            <!-- Wohnfenster (3 Geschosse über Gewerbe) -->
+            <g fill="#e8f0ff" stroke="#0d2d6e" stroke-width="0.5">
+              <rect x="155" y="70" width="32" height="38" rx="2"/>
+              <rect x="205" y="70" width="32" height="38" rx="2"/>
+              <rect x="255" y="70" width="32" height="38" rx="2"/>
+              <rect x="305" y="70" width="32" height="38" rx="2"/>
+              <rect x="155" y="130" width="32" height="38" rx="2"/>
+              <rect x="205" y="130" width="32" height="38" rx="2"/>
+              <rect x="255" y="130" width="32" height="38" rx="2"/>
+              <rect x="305" y="130" width="32" height="38" rx="2"/>
+              <rect x="155" y="190" width="32" height="38" rx="2"/>
+              <rect x="205" y="190" width="32" height="38" rx="2"/>
+              <rect x="255" y="190" width="32" height="38" rx="2"/>
+              <rect x="305" y="190" width="32" height="38" rx="2"/>
             </g>
-            <!-- Mitte: Trennlinie + Label Wohnen -->
-            <rect x="100" y="195" width="200" height="4" fill="#fff" />
-            <text x="200" y="188" text-anchor="middle" fill="#fff" font-size="11" font-family="sans-serif">SOZIALER WOHNBAU (oben)</text>
-            <!-- Unten: Gewerbe (große Schaufenster) -->
-            <rect x="110" y="205" width="70" height="65" fill="#1a3a6e" stroke="#fff" stroke-width="2" />
-            <rect x="190" y="205" width="70" height="65" fill="#1a3a6e" stroke="#fff" stroke-width="2" />
-            <rect x="270" y="205" width="22" height="65" fill="#1a3a6e" stroke="#fff" stroke-width="2" />
-            <text x="200" y="248" text-anchor="middle" fill="#fff" font-size="10" font-family="sans-serif">GEWERBE</text>
-            <!-- Eingang -->
-            <rect x="185" y="250" width="30" height="30" fill="#333" />
-            <text x="200" y="315" text-anchor="middle" fill="#fff" font-size="10" font-family="sans-serif">Innsbruck – Verdichtung mit Mehrwert</text>
+            <!-- Dach -->
+            <polygon points="130,55 260,25 390,55" fill="#1a1a1a" stroke="#fff" stroke-width="1.5"/>
+            <!-- Erdgeschoss: 3 Ladenzeilen mit großem Glas -->
+            <rect x="120" y="235" width="280" height="60" fill="#2a2a2a" stroke="#fff" stroke-width="2"/>
+            <rect x="128" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
+            <rect x="220" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
+            <rect x="312" y="242" width="80" height="46" fill="url(#glas)" stroke="#fff" stroke-width="1.5"/>
+            <!-- Türen / Eingänge zwischen Schaufenstern -->
+            <rect x="210" y="268" width="18" height="27" fill="#1a1a1a" stroke="#fff" stroke-width="1"/>
+            <rect x="302" y="268" width="18" height="27" fill="#1a1a1a" stroke="#fff" stroke-width="1"/>
+            <!-- Beschriftungen seitlich (kein Überdecken) -->
+            <text x="20" y="100" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">SOZIALER</text>
+            <text x="20" y="118" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">WOHNBAU</text>
+            <text x="20" y="138" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">oben –</text>
+            <text x="20" y="155" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">mehrere</text>
+            <text x="20" y="172" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">Geschosse</text>
+            <text x="400" y="268" fill="#fff" font-size="13" font-family="Segoe UI, sans-serif" font-weight="700">GEWERBE</text>
+            <text x="400" y="286" fill="rgba(255,255,255,0.9)" font-size="11" font-family="Segoe UI, sans-serif">Erdgeschoss</text>
+            <text x="400" y="302" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Segoe UI, sans-serif">Laden · Büro · Gastro</text>
+            <!-- Pfeil unten nach oben -->
+            <path d="M 95 270 L 95 80" stroke="#fff" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+            <text x="260" y="332" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="11" font-family="Segoe UI, sans-serif">Querschnitt: ein Gebäude – unten Wirtschaft, oben leistbarer Wohnraum</text>
           </svg>
-          <figcaption>Schematische Visualisierung: Gewerbe im Erdgeschoss, darüber mehrgeschossig Sozialwohnungen.</figcaption>
+          <figcaption>Querschnitt-Schema: Erdgeschoss mit großflächigem Gewerbe (Schaufenster), darüber mehrere Geschosse Sozialwohnungen.</figcaption>
         </figure>
 
         <h2>Weitere Programmpunkte (Kurz)</h2>

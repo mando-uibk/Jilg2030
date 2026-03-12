@@ -323,7 +323,8 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 360px;
+  max-height: 420px;
+  min-height: 260px;
 }
 
 .building-render figcaption {
