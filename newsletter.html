@@ -39,7 +39,6 @@
 
     <section class="section">
       <div class="wrap narrow">
-        <p id="danke" class="danke-msg" hidden>Vielen Dank – die Anmeldung wurde übermittelt.</p>
         <div class="newsletter-box">
           <!-- 
             GitHub Pages hat kein eigenes Backend. Optionen:
@@ -51,7 +50,8 @@
             <label for="email">E-Mail-Adresse</label>
             <input type="email" id="email" name="email" required placeholder="ihre@adresse.at" autocomplete="email" />
             <input type="hidden" name="_subject" value="Newsletter Jilg 2030" />
-            <input type="hidden" name="_next" value="https://mando-uibk.github.io/Jilg2030/newsletter.html?danke=1" />
+            <!-- Bei eigener Domain: URL hier auf https://eure-domain.at/danke.html ändern -->
+            <input type="hidden" name="_next" value="https://mando-uibk.github.io/Jilg2030/danke.html" />
             <button type="submit" class="btn btn-primary">Abonnieren</button>
           </form>
           <p class="form-hint">
@@ -68,11 +68,5 @@
       <span><a href="index.html">Zurück zur Startseite</a></span>
     </div>
   </footer>
-  <script>
-  if (location.search.indexOf("danke=1") !== -1) {
-    var el = document.getElementById("danke");
-    if (el) { el.hidden = false; el.scrollIntoView({ behavior: "smooth", block: "center" }); }
-  }
-  </script>
 </body>
 </html>
