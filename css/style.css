@@ -479,3 +479,47 @@ body {
 .site-footer a {
   color: var(--white);
 }
+
+/* Impressum / rechtliche Seiten */
+.impressum-content h1 {
+  font-family: var(--font-head);
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+
+.impressum-content h2 {
+  font-family: var(--font-head);
+  color: var(--blue);
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--red);
+}
+
+.impressum-content p {
+  margin: 0.75rem 0;
+}
+
+.impressum-lead {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.impressum-placeholder {
+  background: #fff8e6;
+  border-left: 4px solid #e65100;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+}
+
+.impressum-footer-note {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ccc;
+}
+
+.impressum-content a {
+  color: var(--blue);
+  font-weight: 600;
+}
