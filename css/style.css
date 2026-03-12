@@ -351,6 +351,16 @@ body {
 }
 
 /* Newsletter */
+.danke-msg {
+  background: #e8f5e9;
+  border: 2px solid #2e7d32;
+  color: #1b5e20;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
 .newsletter-box {
   background: var(--white);
   padding: 2rem;
