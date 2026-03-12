@@ -94,6 +94,30 @@
     </section>
   </main>
 
+  <!-- Satire-Hinweis: muss bestätigt werden, bevor die Seite nutzbar ist -->
+  <div id="satire-modal" class="satire-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="satire-modal-title" aria-describedby="satire-modal-desc" hidden>
+    <div class="satire-modal-box">
+      <h2 id="satire-modal-title" class="satire-modal-title">Hinweis: Satire</h2>
+      <div id="satire-modal-desc" class="satire-modal-body">
+        <p>
+          Die Inhalte auf <strong>jilg2030.at</strong> sind <strong>Satire</strong> und <strong>Fiktion</strong>.
+          Sie dienen der humorvollen bzw. übertriebenen Auseinandersetzung mit Themen rund um Politik und Stadt –
+          <strong>nicht</strong> als ernstgemeinte Darstellung einer realen Person oder eines realen Wahlprogramms.
+        </p>
+        <p>
+          <strong>Christoph Martin Jilg</strong> als reale Person steht mit diesem Projekt <strong>in keinem Zusammenhang</strong>.
+          Namens- oder Personenähnlichkeiten sind bewusst oder unbewusst satirisch; es besteht keine behauptete
+          Identität mit einer realen Person und kein Anspruch auf wahrheitsgemäße Abbildung.
+        </p>
+      </div>
+      <label class="satire-modal-check">
+        <input type="checkbox" id="satire-modal-agree" />
+        <span>Ich habe verstanden und bestätige, dass es sich um Satire handelt und dass dies nichts mit Christoph als Person zu tun hat.</span>
+      </label>
+      <button type="button" id="satire-modal-btn" class="btn btn-primary satire-modal-btn" disabled>Weiter zur Seite</button>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span>jilg2030.at</span>
@@ -101,5 +125,29 @@
       <span><a href="impressum.html">Impressum</a></span>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var KEY = "jilg2030_satire_ack";
+    var VER = "1";
+    var overlay = document.getElementById("satire-modal");
+    var check = document.getElementById("satire-modal-agree");
+    var btn = document.getElementById("satire-modal-btn");
+    if (!overlay || !check || !btn) return;
+    try {
+      if (localStorage.getItem(KEY) === VER) return;
+    } catch (e) { /* private mode etc. – Modal zeigen */ }
+    overlay.hidden = false;
+    document.documentElement.classList.add("satire-modal-open");
+    check.addEventListener("change", function () { btn.disabled = !check.checked; });
+    btn.addEventListener("click", function () {
+      if (!check.checked) return;
+      try { localStorage.setItem(KEY, VER); } catch (e) {}
+      overlay.hidden = true;
+      overlay.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("satire-modal-open");
+    });
+  })();
+  </script>
 </body>
 </html>
