@@ -25,22 +25,13 @@ Das Plakatfoto soll **sehr prominent** auf der Startseite erscheinen:
 
 Ohne Bild bleibt der blaue Hero-Bereich mit Text erhalten; das Bild wird empfohlen.
 
-## Newsletter-Formular
+## Programm per E-Mail (Eintragung)
 
-GitHub Pages liefert nur **statische** Dateien – kein PHP/Backend.
+GitHub Pages hat kein Backend. **Eintragung** läuft über **Formspree** auf `eintragung.html`.
 
-**Option A – Formspree (einfach):**
-
-1. Auf [formspree.io](https://formspree.io) registrieren, neues Formular anlegen.
-2. In `newsletter.html` die `action="https://formspree.io/f/YOUR_FORM_ID"` durch deine Formspree-URL ersetzen.
-
-**Option B – Google Form:**
-
-Google Formular erstellen und per `<iframe>` auf `newsletter.html` einbetten (Embed-Code von Google kopieren).
-
-**Option C – Mailchimp / anderer Anbieter:**
-
-Dort generierten Einbettungs- oder Signup-Link/Button einbauen.
+- Wer sich einträgt, soll **sofort eine E-Mail** mit Programm-Einstieg bekommen → dafür in Formspree einen **Autoresponder** einrichten; Textvorlage: **`assets/programm-willkommen.txt`**.
+- Details: **`EINTRAGUNG.md`**
+- Alte Seite `newsletter.html` leitet nur noch auf `eintragung.html` um.
 
 ## Lokales Testen
 

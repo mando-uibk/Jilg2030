@@ -350,8 +350,8 @@ body {
   font-size: 0.9rem;
 }
 
-/* Newsletter */
-/* Danke-Seite nach Newsletter-Absenden */
+/* Eintragung / Programm per E-Mail */
+/* Danke-Seite nach Formular-Absenden */
 .danke-page-box {
   background: var(--white);
   padding: 2rem;
@@ -405,6 +405,7 @@ body {
   margin: 0 0 1rem;
 }
 
+.signup-box,
 .newsletter-box {
   background: var(--white);
   padding: 2rem;
@@ -413,6 +414,7 @@ body {
   box-shadow: 0 8px 24px rgba(13, 45, 110, 0.08);
 }
 
+.signup-form label,
 .newsletter-form label {
   display: block;
   font-weight: 700;
@@ -420,6 +422,7 @@ body {
   color: var(--blue);
 }
 
+.signup-form input[type="email"],
 .newsletter-form input[type="email"] {
   width: 100%;
   max-width: 400px;
@@ -430,6 +433,7 @@ body {
   margin-bottom: 1rem;
 }
 
+.signup-form input:focus,
 .newsletter-form input:focus {
   outline: none;
   border-color: var(--blue);

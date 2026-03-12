@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+  (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Programm per E-Mail – Jilg 2030. Eintragen, sofort Zugang ins Postfach." />
+  <title>Programm per E-Mail – Jilg 2030</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">jilg<span>2030</span>.at</a>
+      <nav>
+        <a href="index.html">Start</a>
+        <a href="programm.html">Programm</a>
+        <a href="eintragung.html">Programm per E-Mail</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1>Programm per E-Mail</h1>
+        <p class="lead">
+          Einmal eintragen – <strong>sofort</strong> bekommen Sie den Programm-Einstieg und die wichtigsten Punkte 
+          <strong>direkt in Ihr Postfach</strong>. Kein Newsletter-Abo, kein wöchentlicher Versand von uns 
+          (außer ihr richtet das später selbst ein).
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="signup-box">
+          <form class="signup-form" action="https://formspree.io/f/mpqyrlrq" method="POST">
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" id="email" name="email" required placeholder="ihre@adresse.at" autocomplete="email" />
+            <input type="hidden" name="_subject" value="Programm per E-Mail – Jilg 2030" />
+            <input type="hidden" name="_next" value="https://mando-uibk.github.io/Jilg2030/danke.html" />
+            <button type="submit" class="btn btn-primary">Programm zuschicken</button>
+          </form>
+          <p class="form-hint">
+            Technisch läuft das über Formspree. Damit wirklich <strong>sofort eine E-Mail</strong> bei der 
+            eingetragenen Adresse ankommt, muss im Formspree-Dashboard ein <strong>Autoresponder</strong> 
+            aktiv sein – Textvorlage liegt im Repo unter <code>assets/programm-willkommen.txt</code>. 
+            Ohne Autoresponder: nur Benachrichtigung an euch + Weiterleitung auf die Danke-Seite mit Programmtext.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>jilg2030.at</span>
+      <span><a href="index.html">Zurück zur Startseite</a></span>
+    </div>
+  </footer>
+</body>
+</html>
