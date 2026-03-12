@@ -1,6 +1,12 @@
 # Passwort-Gate (jilg2030.at)
 
-Die Website kann per **Passwort** vor dem ersten Aufruf abgesichert werden. Nach erfolgreicher Eingabe wird ein **Cookie** gesetzt (Standard: **7 Tage**), damit beim Weiterklicken keine erneute Abfrage erscheint.
+Die Website kann per **Passwort** abgesichert werden.
+
+- **`index.html`** – nur **undurchsichtige** Vollbild-Seite (Königsblau `#0d2d6e`) mit Passwortfeld, **kein** sichtbarer Seiteninhalt darunter.
+- **`home.html`** – bisherige **Startseite** (Hero, Texte, …). Nach Login wird dorthin (oder zu `?next=…`) weitergeleitet.
+- Ohne Cookie: Aufruf von `programm.html`, `unterstuetzer.html`, … leitet sofort auf `index.html?next=…` um – **kein** Durchscheinen des Inhalts.
+
+Nach erfolgreicher Eingabe wird ein **Cookie** gesetzt (Standard: **7 Tage**), damit beim Weiterklicken keine erneute Abfrage erscheint.
 
 ## Wichtig (GitHub Pages = statisch)
 
@@ -45,4 +51,5 @@ Cookie löschen = Passwort wird beim nächsten Besuch wieder verlangt.
 | `js/gate-secret.js` | `window.__JILG_SITE_PASSWORD__` – im Repo leer; in CI aus Secret gefüllt |
 | `.github/workflows/pages.yml` | Schritt „Inject site password“ vor Upload |
 
-Alle HTML-Seiten laden `gate-secret.js` und danach `gate.js` direkt nach `<body>`.
+`index.html` lädt nur `gate-secret.js` + `gate.js` (kein `style.css`, damit nichts durchscheint).  
+Alle **Inhaltsseiten** inkl. `home.html` laden dieselben Skripte zuerst – ohne Cookie erfolgt **sofortiger Redirect** auf die Gate-Seite.
