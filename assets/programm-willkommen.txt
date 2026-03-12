@@ -29,8 +29,7 @@ WEITERE RICHTUNGEN (KURZ)
 ---
 
 Das ausführliche Programm mit Grafik:
-https://mando-uibk.github.io/Jilg2030/programm.html
-(Bei eigener Domain: https://jilg2030.at/programm.html)
+https://jilg2030.at/programm.html
 
 ---
 

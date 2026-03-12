@@ -9,9 +9,17 @@ Statische Website für die Bürgermeisterwahl Innsbruck 2030 – **minimaler Auf
 3. Nach 1–2 Minuten ist die Site unter  
    `https://<dein-username>.github.io/<repo-name>/` erreichbar.
 
-### Eigene Domain (später)
+### Eigene Domain (jilg2030.at)
 
-Wenn die Domain steht (z. B. jilg2030.at):
+**World4You + GitHub Pages:** siehe **`DOMAIN_SETUP.md`** (DNS A-Records, CNAME-Datei, E-Mail MX nicht anfassen).
+
+Kurz: GitHub Repo → Settings → Pages → Custom domain `jilg2030.at` → bei World4You **A-Records** auf die vier GitHub-IPs → warten → HTTPS aktivieren.
+
+---
+
+### Eigene Domain (allgemein)
+
+Wenn die Domain steht:
 
 - Bei deinem DNS-Anbieter **CNAME** auf `<username>.github.io` setzen **oder** A-Records laut [GitHub-Doku](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 - Im Repo: *Settings* → *Pages* → *Custom domain* eintragen; optional „Enforce HTTPS“ aktivieren.
