@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+  (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Unterstützungsliste – Jilg 2030 Innsbruck." />
+  <title>Unterstützer – Jilg 2030</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Firebase (Compat) – nach Einrichtung siehe UNTERSTUETZER_FIREBASE.md -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">jilg<span>2030</span>.at</a>
+      <nav>
+        <a href="index.html">Start</a>
+        <a href="programm.html">Programm</a>
+        <a href="unterstuetzer.html">Unterstützer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1>Unterstützungsliste</h1>
+        <p class="lead">
+          Wer die Kampagne unterstützen möchte, kann sich hier eintragen – <strong>öffentlich sichtbar</strong>, 
+          ähnlich wie bei Spendenseiten. Vor- und Nachname genügen.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <div id="firebase-hinweis" class="supporter-setup-hint" hidden>
+          <strong>Noch nicht eingerichtet:</strong> Damit Einträge gespeichert und live angezeigt werden, 
+          muss <strong>Firebase Firestore</strong> verbunden werden. Anleitung: 
+          <code>UNTERSTUETZER_FIREBASE.md</code> im Repository – danach hier die Config eintragen.
+        </div>
+
+        <div class="supporter-form-box">
+          <h2>Ich unterstütze</h2>
+          <form id="supporter-form">
+            <label for="vorname">Vorname</label>
+            <input type="text" id="vorname" name="vorname" required maxlength="80" autocomplete="given-name" placeholder="Vorname" />
+            <label for="nachname">Nachname</label>
+            <input type="text" id="nachname" name="nachname" required maxlength="80" autocomplete="family-name" placeholder="Nachname" />
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn btn-primary" id="submit-btn">Eintragen</button>
+          </form>
+          <p id="form-message" class="form-message" aria-live="polite"></p>
+        </div>
+
+        <div class="supporter-list-section">
+          <h2>Bereits dabei</h2>
+          <p class="supporter-count" id="supporter-count"></p>
+          <ul class="supporter-list" id="supporter-list">
+            <li class="supporter-loading">Lade Liste…</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>jilg2030.at</span>
+      <span><a href="mailto:buergermeister@jilg2030.at">buergermeister@jilg2030.at</a></span>
+    </div>
+  </footer>
+
+  <style>
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .supporter-setup-hint { background: #fff3e0; border: 1px solid #e65100; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; }
+    .supporter-form-box { background: var(--white); padding: 1.5rem 2rem; border-radius: 8px; border: 2px solid var(--blue); margin-bottom: 2.5rem; }
+    .supporter-form-box label { display: block; font-weight: 700; color: var(--blue); margin: 0.75rem 0 0.35rem; }
+    .supporter-form-box input[type="text"] { width: 100%; max-width: 360px; padding: 0.6rem 0.85rem; border: 2px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    .supporter-form-box input:focus { outline: none; border-color: var(--blue); }
+    .supporter-form-box .btn { margin-top: 1rem; }
+    .form-message { margin-top: 1rem; font-weight: 600; }
+    .form-message.ok { color: #2e7d32; }
+    .form-message.err { color: #c62828; }
+    .supporter-list-section h2 { font-family: var(--font-head); color: var(--blue); }
+    .supporter-count { color: #555; margin-bottom: 1rem; }
+    .supporter-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem 1.25rem; }
+    .supporter-list li { background: var(--off-white); padding: 0.65rem 1rem; border-radius: 6px; border-left: 4px solid var(--red-bright); font-weight: 600; }
+    .supporter-list li.supporter-loading { border-left-color: #999; font-weight: 400; color: #666; }
+  </style>
+
+  <script>
+  (function () {
+    // === Firebase-Konfiguration – nach Anlage im Firebase Console hier einfügen ===
+    var firebaseConfig = {
+      apiKey: "DEIN_API_KEY",
+      authDomain: "DEIN_PROJECT.firebaseapp.com",
+      projectId: "DEIN_PROJECT_ID",
+      storageBucket: "DEIN_PROJECT.appspot.com",
+      messagingSenderId: "…",
+      appId: "…"
+    };
+
+    var listEl = document.getElementById("supporter-list");
+    var countEl = document.getElementById("supporter-count");
+    var formEl = document.getElementById("supporter-form");
+    var msgEl = document.getElementById("form-message");
+    var hintEl = document.getElementById("firebase-hinweis");
+    var submitBtn = document.getElementById("submit-btn");
+
+    function notConfigured() {
+      return !firebaseConfig.apiKey || firebaseConfig.apiKey === "DEIN_API_KEY";
+    }
+
+    if (notConfigured()) {
+      hintEl.hidden = false;
+      listEl.innerHTML = "<li class=\"supporter-loading\">Firebase noch nicht konfiguriert – siehe UNTERSTUETZER_FIREBASE.md</li>";
+      if (formEl) formEl.addEventListener("submit", function (e) {
+        e.preventDefault();
+        msgEl.textContent = "Bitte zuerst Firebase einrichten (Anleitung im Repo).";
+        msgEl.className = "form-message err";
+      });
+      return;
+    }
+
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    function renderList(snapshot) {
+      var items = [];
+      snapshot.forEach(function (doc) {
+        var d = doc.data();
+        var name = (d.vorname || "").trim() + " " + (d.nachname || "").trim();
+        if (name.trim()) items.push(name.trim());
+      });
+      countEl.textContent = items.length ? items.length + " Unterstützer" : "Noch keine Einträge – seien Sie der Erste.";
+      if (items.length === 0) {
+        listEl.innerHTML = "<li class=\"supporter-loading\">Noch niemand eingetragen.</li>";
+        return;
+      }
+      listEl.innerHTML = items.map(function (n) { return "<li>" + escapeHtml(n) + "</li>"; }).join("");
+    }
+
+    function escapeHtml(s) {
+      var d = document.createElement("div");
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    db.collection("supporters")
+      .orderBy("createdAt", "desc")
+      .onSnapshot(renderList, function () {
+        listEl.innerHTML = "<li class=\"supporter-loading\">Liste temporär nicht erreichbar.</li>";
+      });
+
+    formEl.addEventListener("submit", function (e) {
+      e.preventDefault();
+      msgEl.textContent = "";
+      msgEl.className = "form-message";
+      if (formEl.website && formEl.website.value) return;
+      var vor = (document.getElementById("vorname").value || "").trim();
+      var nach = (document.getElementById("nachname").value || "").trim();
+      if (!vor || !nach) {
+        msgEl.textContent = "Bitte Vor- und Nachname ausfüllen.";
+        msgEl.className = "form-message err";
+        return;
+      }
+      submitBtn.disabled = true;
+      db.collection("supporters").add({
+        vorname: vor,
+        nachname: nach,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function () {
+        msgEl.textContent = "Vielen Dank – Sie erscheinen gleich in der Liste.";
+        msgEl.className = "form-message ok";
+        formEl.reset();
+      }).catch(function () {
+        msgEl.textContent = "Eintragen fehlgeschlagen. Bitte später erneut versuchen.";
+        msgEl.className = "form-message err";
+      }).finally(function () {
+        submitBtn.disabled = false;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

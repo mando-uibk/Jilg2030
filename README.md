@@ -18,6 +18,11 @@ Kontakt: **buergermeister@jilg2030.at** (mailto auf der Seite).
 python -m http.server 8080
 ```
 
+## Unterstützungsliste
+
+**`unterstuetzer.html`** – Besucher tragen Vor-/Nachname ein, Liste aktualisiert **live** (Firebase Firestore).  
+Einrichtung: **`UNTERSTUETZER_FIREBASE.md`**
+
 ## Inhalt
 
 - Sprache: **Deutsch**
