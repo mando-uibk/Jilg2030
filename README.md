@@ -26,4 +26,4 @@ python -m http.server 8080
 
 ---
 
-*Privates Projekt / Satire – kein offizielles Wahlwerbematerial.*
+*Kampagne Jilg 2030.*
