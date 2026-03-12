@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Newsletter Jilg 2030 – Wöchentliche Einordnung zu Innsbruck und Wohnungsmarkt." />
+  <title>Newsletter – Jilg 2030</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">jilg<span>2030</span>.at</a>
+      <nav>
+        <a href="index.html">Start</a>
+        <a href="programm.html">Programm</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1>Newsletter</h1>
+        <p class="lead">
+          Einmal pro Woche: kurze Zusammenfassung – was unser Kandidat zu aktuellen Nachrichten 
+          in Österreich und vor allem in Innsbruck sagt. <strong>Schwerpunkt Wohnungsmarkt</strong> 
+          (Mieten, sozialer Wohnbau, Projekte).
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="newsletter-box">
+          <!-- 
+            GitHub Pages hat kein eigenes Backend. Optionen:
+            1) Formspree: https://formspree.io – Form action durch eigene URL ersetzen
+            2) Google Forms: Formular erstellen und hier per iframe einbinden
+            3) Button zu externem Anbieter (Mailchimp, etc.)
+          -->
+          <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" id="email" name="email" required placeholder="ihre@adresse.at" autocomplete="email" />
+            <input type="hidden" name="_subject" value="Newsletter Jilg 2030" />
+            <button type="submit" class="btn btn-primary">Abonnieren</button>
+          </form>
+          <p class="form-hint">
+            <strong>Hinweis für den Betrieb:</strong> Bei Formspree kostenlos anmelden, Formular anlegen 
+            und die <code>action</code>-URL in dieser Datei eintragen. Alternativ Google Form einbetten – 
+            siehe README.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>jilg2030.at</span>
+      <span><a href="index.html">Zurück zur Startseite</a></span>
+    </div>
+  </footer>
+</body>
+</html>

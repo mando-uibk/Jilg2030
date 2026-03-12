@@ -1,0 +1,12 @@
+# OS
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*~
+
+# Optional local-only
+.env
+*.local
