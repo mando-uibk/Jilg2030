@@ -377,6 +377,34 @@ body {
   margin-top: 1.5rem;
 }
 
+.programm-einstieg {
+  background: var(--off-white);
+  border-left: 4px solid var(--blue);
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.programm-einstieg-title {
+  font-family: var(--font-head);
+  color: var(--blue);
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+}
+
+.programm-einstieg h3 {
+  font-family: var(--font-head);
+  color: var(--red-bright);
+  margin: 1rem 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.slogan-inline {
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 1rem;
+}
+
 .newsletter-box {
   background: var(--white);
   padding: 2rem;
