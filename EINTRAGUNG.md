@@ -1,29 +1,20 @@
-# Programm per E-Mail – Eintragung
+# Eintragung + Dankes-Mail ohne Formspree
 
-## Idee
+## Voraussetzung
 
-**Kein Newsletter.** Wer sich einträgt, soll **direkt etwas auf die eingetragene E-Mail** bekommen – einmalig den Programm-Einstieg + Dank.
+**GitHub Pages kann keine E-Mails senden.**  
+Ohne Formspree braucht ihr **PHP-Webspace** (z. B. World4You Hosting), auf dem **`send-thanks.php`** liegt und per **SMTP** mit `buergermeister@jilg2030.at` versendet.
 
 ## Ablauf
 
-1. Besucher öffnet **`eintragung.html`** (Nav: „Programm per E-Mail“).
-2. E-Mail eintragen → Absenden → **Formspree** nimmt die Adresse entgegen.
-3. **Sofort-Mail an den Besucher:** nur wenn in Formspree ein **Autoresponder** aktiv ist – Inhalt aus **`assets/programm-willkommen.txt`**.
-4. **Danke-Seite** (`danke.html`): Fallback mit gleichem Programmtext im Browser, falls keine Autoresponder-Mail ankommt.
+1. Besucher trägt E-Mail auf **`eintragung.html`** ein → Formular **POST** an eure **`send-thanks.php`**-URL.
+2. Skript prüft Adresse, verschickt **Dankes-Mail** (Text aus `world4you-mail/email-body.txt`) per **smtp.world4you.com**.
+3. Weiterleitung auf **`danke.html`**.
 
-Alte URL **`newsletter.html`** leitet auf **`eintragung.html`** weiter.
+## Einrichtung
 
-## Formspree einrichten
+Siehe **`world4you-mail/README.md`** – PHPMailer, `config.php`, Upload, dann in **`eintragung.html`** die **form action** auf die echte URL setzen (z. B. `https://jilg2030.at/mail/send-thanks.php`).
 
-1. Formular (bestehendes Endpoint) im Dashboard öffnen.
-2. **Autoresponder** aktivieren – Empfänger ist automatisch das Feld `email`.
-3. Betreff + Text aus `programm-willkommen.txt` einfügen (Links auf finale Domain anpassen).
-4. Optional: In Formspree nur „einmal pro Adresse“ oder Spam-Schutz prüfen.
+## Ohne PHP-Hosting
 
-Ohne Autoresponder: ihr bekommt nur die Benachrichtigung mit der Adresse; der Besucher sieht nach Absenden die Danke-Seite mit Programmtext – aber **keine** Mail von euch automatisch.
-
-## Technik
-
-- Formular: `eintragung.html` → `action` = eure Formspree-URL.
-- `_subject`: z. B. `Programm per E-Mail – Jilg 2030`.
-- `_next`: `danke.html` (absolute URL bei GitHub Pages).
+Dann ist **kein** automatischer Mailversand ohne Drittanbieter möglich – nur **mailto:** oder weiterhin ein Dienst wie Formspree.

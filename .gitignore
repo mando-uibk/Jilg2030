@@ -10,3 +10,6 @@ Desktop.ini
 # Optional local-only
 .env
 *.local
+
+# SMTP-Passwort – nie committen
+world4you-mail/config.php

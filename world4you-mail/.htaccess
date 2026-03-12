@@ -1,0 +1,4 @@
+# config.php nicht ausliefern
+<Files "config.php">
+  Require all denied
+</Files>

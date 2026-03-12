@@ -6,12 +6,13 @@
   (function(){if(!location.hostname.endsWith("github.io"))return;var p=location.pathname.split("/").filter(Boolean),l=p[p.length-1];if(l&&l.indexOf(".")!==-1)p.pop();if(!p.length)return;var b=document.createElement("base");b.href="/"+p.join("/")+"/";var h=document.getElementsByTagName("head")[0];h&&h.insertBefore(b,h.firstChild);})();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Programm per E-Mail – Jilg 2030. Eintragen, sofort Zugang ins Postfach." />
+  <meta name="description" content="Programm per E-Mail – Jilg 2030. Eintragen, Dankes-Mail von buergermeister@jilg2030.at." />
   <title>Programm per E-Mail – Jilg 2030</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}</style>
 </head>
 <body>
   <header class="site-header">
@@ -30,28 +31,29 @@
       <div class="wrap">
         <h1>Programm per E-Mail</h1>
         <p class="lead">
-          Einmal eintragen – <strong>sofort</strong> bekommen Sie den Programm-Einstieg und die wichtigsten Punkte 
-          <strong>direkt in Ihr Postfach</strong>. Kein Newsletter-Abo, kein wöchentlicher Versand von uns 
-          (außer ihr richtet das später selbst ein).
+          Einmal eintragen – Sie erhalten <strong>sofort eine Dankes-Mail</strong> mit dem Programm-Einstieg 
+          von <strong>buergermeister@jilg2030.at</strong>. Ohne Formspree, direkt über unseren Server.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap narrow">
+        <p class="form-hint" style="margin-bottom:1rem">Falls das Absenden nicht klappt, ist das PHP-Skript noch nicht unter der richtigen URL erreichbar – siehe <code>world4you-mail/README.md</code>.</p>
+        <!--
+          action = exakte URL eurer hochgeladenen send-thanks.php (World4You Webspace mit PHP).
+          Beispiel nach Upload nach /mail/: https://jilg2030.at/mail/send-thanks.php
+        -->
         <div class="signup-box">
-          <form class="signup-form" action="https://formspree.io/f/mpqyrlrq" method="POST">
+          <form class="signup-form" action="https://jilg2030.at/mail/send-thanks.php" method="POST">
             <label for="email">E-Mail-Adresse</label>
             <input type="email" id="email" name="email" required placeholder="ihre@adresse.at" autocomplete="email" />
-            <input type="hidden" name="_subject" value="Programm per E-Mail – Jilg 2030" />
-            <input type="hidden" name="_next" value="https://jilg2030.at/danke.html" />
+            <!-- Honeypot – nicht ausfüllen -->
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <button type="submit" class="btn btn-primary">Programm zuschicken</button>
           </form>
           <p class="form-hint">
-            Technisch läuft das über Formspree. Damit wirklich <strong>sofort eine E-Mail</strong> bei der 
-            eingetragenen Adresse ankommt, muss im Formspree-Dashboard ein <strong>Autoresponder</strong> 
-            aktiv sein – Textvorlage liegt im Repo unter <code>assets/programm-willkommen.txt</code>. 
-            Ohne Autoresponder: nur Benachrichtigung an euch + Weiterleitung auf die Danke-Seite mit Programmtext.
+            Nach dem Absenden sendet unser Server eine E-Mail an die angegebene Adresse und leitet auf die Danke-Seite weiter.
           </p>
         </div>
       </div>
