@@ -87,6 +87,91 @@ body {
   text-decoration: underline;
 }
 
+/* Mobile Navigation */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-left: 0.5rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  position: relative;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1.2rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.nav-toggle span::before {
+  top: -0.35rem;
+}
+
+.nav-toggle span::after {
+  top: 0.35rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 100%;
+    margin-top: 0.35rem;
+    background: #071634;
+    border-radius: 0 0 0 12px;
+    padding: 0.75rem 1rem 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 12rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transform-origin: top right;
+    transform: scaleY(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+  }
+
+  .site-header.nav-open .site-nav {
+    opacity: 1;
+    transform: scaleY(1);
+    pointer-events: auto;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 0.2rem 0;
+  }
+}
+
 /* Hero – Kandidat prominent */
 .hero {
   position: relative;
