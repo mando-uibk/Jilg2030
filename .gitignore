@@ -10,3 +10,7 @@ Desktop.ini
 # Optional local-only
 .env
 *.local
+
+# Alle Markdown-Dateien ignorieren, außer README
+*.md
+!README.md
